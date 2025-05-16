@@ -35,43 +35,34 @@ This technique is especially useful when expertise in a specific domain is requi
 ### Task:
 You've submitted code for review and received feedback that seems superficial. You need to use AI to get a deeper analysis of your code from different perspectives.
 
-[Javascript](https://github.com/julia-dream/pr-review-using-role-prompting/blob/master/processUserData.js) | 
-[Python](https://github.com/julia-dream/pr-review-using-role-prompting/blob/master/processUserData.py) | 
-[Java](https://github.com/julia-dream/pr-review-using-role-prompting/blob/master/processUserData.java),
-[Go](https://github.com/julia-dream/pr-review-using-role-prompting/blob/master/processUserData.go).
+### Task Instructions
+- Choose one of the provided processUserData function implementations as the target for your AI-driven review:
+   - [Javascript](https://github.com/julia-dream/pr-review-using-role-prompting/blob/master/processUserData.js)
+   - [C#](https://github.com/julia-dream/pr-review-using-role-prompting/blob/master/processUserData.cs)
+   - [Python](https://github.com/julia-dream/pr-review-using-role-prompting/blob/master/processUserData.py)
+   - [Java](https://github.com/julia-dream/pr-review-using-role-prompting/blob/master/processUserData.java)
+   - [Go](https://github.com/julia-dream/pr-review-using-role-prompting/blob/master/processUserData.go)
+- Define Expert Roles and Analysis Focus 
+   - Your prompt must instruct the AI to adopt the following three expert personas sequentially, providing an analysis from each viewpoint. The focus areas for each role could be `As an Experienced Developer`, `As a Security Engineer`, `As a Performance Specialist`.
+- Creating the Prompt
+  - The prompt must clearly instruct the AI to:
+    - Take the provided code snippet as input.
+    - Analyze it from each of the three specified expert perspectives (Developer, Security Engineer, Performance Specialist).
+    - For each perspective, provide specific, actionable recommendations and observations to improve the code.
+   
+### Implementation and Testing
+Implementation (Prompt Design):
+- Write the role-based prompt based on the "Task Instructions." The prompt is the primary artifact you are creating.
+Testing (Conceptual Verification):
+- Evaluate AI Output: Assess if the AI's expected or actual response generated using your prompt:
+   - Provides distinct and relevant feedback for each of the three roles.
+   - Covers the specified focus areas for each role.
+   - Offers actionable and specific recommendations, not just generic statements.
+   - Aligns with the kind of in-depth analysis described in the "Expected analysis results" from the original problem description (e.g., identifying var usage for JS, data validation issues for security, array iteration inefficiencies for performance).
+- Refine Prompt: If the expected output is lacking, iterate on your prompt to improve its clarity and effectiveness in guiding the AI.
 
-### Question:
-What prompt using role instructions would you create to get a comprehensive analysis of this code from the perspective of different experts?
+### Deliverables
+The complete and final text of the prompt you have designed. This prompt should be ready to be used with an AI model to analyze the selected processUserData code snippet.
 
-### Verification:
-Compare your prompt with the expected answer:
-
-#### Expected Role Prompt
-
-```
-Analyze the following JavaScript code from the perspective of three different experts:
-As an experienced JavaScript developer, evaluate the code quality, efficiency, and adherence to modern JS standards.
-As a security engineer, identify potential vulnerabilities and security issues in this code.
-As a performance specialist, assess the code efficiency and suggest optimizations.
-For each role, provide specific recommendations for improving the code in the respective aspect.
-
-**Expected analysis results:**
-
-**JavaScript Developer:**
-- Usage of outdated var instead of let/const
-- Application of modern array methods (map, filter) instead of for loops
-- Use of template literals instead of concatenation
-- Unnecessary use of ternary operator for boolean value
-
-**Security Engineer:**
-- Lack of user data validation
-- Potential XSS vulnerabilities when processing user input
-- Risks when saving unverified data to database
-
-**Performance Specialist:**
-- Inefficiency when working with large data arrays
-- Multiple access to the same array elements
-- Suggestions for using memoization or caching
-```
 
 
